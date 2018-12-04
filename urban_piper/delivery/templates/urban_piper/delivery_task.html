@@ -1,0 +1,27 @@
+{% extends "urban_piper/dashboard.html" %}
+
+{% block title %}Task{% endblock %}
+
+{% block main %}
+<div class="row">
+  <ul class="collapsible">
+    {% for task in delivery_tasks_list %}
+    <li>
+      <div class="collapsible-header">
+        <div style="margin-top: 15px">
+          {{task.title}}
+          {% if task.status == "new" %}
+          <a href="delivery_task/{{task.id}}/accept" class="btn right">Accept</a>
+          {% endif%}
+          {% if task.status == "accepted" %}
+          <a href="delivery_task/{{task.id}}/decline" class="red btn right" >Decline</a>
+          <a href="delivery_task/{{task.id}}/complete" class="btn right" style="margin-right: 10px" >Complete</a>
+          {% endif%}
+        </div>
+      </div>
+    </li>
+    {% endfor%}
+  </ul>
+  
+</div>
+{% endblock %}

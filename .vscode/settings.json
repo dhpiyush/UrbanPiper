@@ -1,0 +1,5 @@
+{
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "django_env/bin/python",
+    "python.formatting.provider": "black"
+}

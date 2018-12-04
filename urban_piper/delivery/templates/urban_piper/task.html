@@ -1,0 +1,51 @@
+{% extends "urban_piper/dashboard.html" %}
+
+{% block title %}Task{% endblock %}
+
+{% block main %}
+<div class="row">
+  <div class="col s3">
+    <a href="task/new" class="red btn">Creat New Task</a>
+  </div>
+</div>
+
+<div class="row">
+  <ul class="collapsible">
+    {% for task in tasks_list %}
+    <li>
+      <div class="collapsible-header">
+        <div style="margin-top: 15px">
+          {{task.title}}
+          {% if task.status != "cancelled" and task.status != "completed" %}
+          <a href="task/{{task.id}}/cancel" class="red btn right">Cancel</a>
+          {% endif%}
+          <span class="btn right" style="margin-right: 10px">{{task.status}}</span>
+        </div>
+      </div>
+      <div class="collapsible-body center">
+        <div style="margin: 20px">
+          <span>New</span>
+          {% if task.accepted_on != NULL %}
+            <i class="material-icons">forward</i>
+            <span>Accepted</span>
+          {% endif%}
+          {% if task.declined_on != NULL %}
+            <i class="material-icons">forward</i>
+            <span>Declined</span>
+          {% endif%}
+          {% if task.completed_on != NULL %}
+            <i class="material-icons">forward</i>
+            <span>Completed</span>
+          {% endif%}
+          {% if task.cancelled_on != NULL %}
+            <i class="material-icons">forward</i>
+            <span>Cancelled</span>
+          {% endif%}
+        </div>
+      </div>
+    </li>
+    {% endfor%}
+  </ul>
+  
+</div>
+{% endblock %}

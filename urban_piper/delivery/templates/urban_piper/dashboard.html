@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <title>{% block title %}{% endblock %} - UrbanPiper</title>
+
+  <!-- CSS  -->
+  <link href="{% static "css/materialize.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="{% static "css/style.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+  <nav class="top-nav red">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a class="page-title">Urban Piper</a>
+        <a href="/logout" class="red btn right" style="margin: 15px">Logout</a>
+        <div class="bold right">
+          Hi {{user.username}}
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="dashboard" style="margin-top: 50px">
+    <div class="container">
+      <div class="row">
+        {% block main %}{% endblock %}
+      </div>
+
+    </div>
+  </div>
+  <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
+  <script src="{% static "js/materialize.js" %}"></script>
+  <script src="{% static "js/init.js" %}"></script>
+</body>
+
+</html>
